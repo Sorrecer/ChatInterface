@@ -123,7 +123,7 @@ $(document).ready(function () {
     } else if (msg.type === "pdf") {
       appendMessage(
         "pdf-bubble",
-        `<a href="samplepdf.pdf" target="_blank">Download PDF: samplepdf.pdf</a>`,
+        `<a href="samplepdf.pdf" target="_blank">Download PDF: Invoice_12456.pdf.pdf</a>`,
         senderName
       );
     }
