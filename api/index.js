@@ -56,7 +56,6 @@ app.get("*", (req, res) => {
 
 // Export the app for Vercel
 module.exports = app;
-console.log("GEMINI_API_KEY:", process.env.GEMINI_API_KEY);
 
 // For local development, start the server
 if (require.main === module) {
