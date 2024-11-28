@@ -18,64 +18,6 @@ const model = genAI.getGenerativeModel({
     "Anda adalah seorang admin pada Qiscus, anda akan melanjutkan obrolan terhadap suatu customer yang telah berhasil mengirimkan bukti pembayaran.",
 });
 
-// Chat history yang ingin ditambahkan
-const chatHistory = [
-  {
-    id: 885512,
-    type: "text",
-    message: "Selamat malam",
-    sender: "customer@mail.com",
-  },
-  { id: 885513, type: "text", message: "Malam", sender: "agent@mail.com" },
-  {
-    id: 885514,
-    type: "text",
-    message: "Ada yang bisa saya bantu?",
-    sender: "agent@mail.com",
-  },
-  {
-    id: 885515,
-    type: "text",
-    message:
-      "Saya ingin mengirimkan bukti pembayaran, karena diaplikasi selalu gagal",
-    sender: "customer@mail.com",
-  },
-  {
-    id: 885516,
-    type: "text",
-    message: "Baik, silahkan kirimkan lampiran bukti pembayarannya",
-    sender: "agent@mail.com",
-  },
-  {
-    id: 885517,
-    type: "image",
-    url: "https://picsum.photos/200/300",
-    message: "Bukti pembayaran",
-    sender: "customer@mail.com",
-  },
-  {
-    id: 885518,
-    type: "video",
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    thumbnail_url: "https://picsum.photos/200/100",
-    message: "Video penjelasan produk",
-    sender: "agent@mail.com",
-  },
-  {
-    id: 885519,
-    type: "pdf",
-    url: "https://example.com/document.pdf",
-    file_name: "Invoice_12456.pdf",
-    sender: "customer@mail.com",
-  },
-  {
-    id: 885520,
-    type: "text",
-    message: "Terima kasih, sudah saya terima.",
-    sender: "agent@mail.com",
-  },
-];
-
 const generationConfig = {
   temperature: 0.5,
   topP: 0.95,
@@ -84,8 +26,7 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
-// Menyertakan history chat ke dalam session chat
-const chatSession = model.startChat({ generationConfig, history: chatHistory });
+const chatSession = model.startChat({ generationConfig });
 
 app.post("/api/chat", async (req, res) => {
   const { message } = req.body;
@@ -115,6 +56,7 @@ app.get("*", (req, res) => {
 
 // Export the app for Vercel
 module.exports = app;
+console.log("GEMINI_API_KEY:", process.env.GEMINI_API_KEY);
 
 // For local development, start the server
 if (require.main === module) {
