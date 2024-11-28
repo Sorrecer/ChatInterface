@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qiscus Chat Interface</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="chat-widget">
+      <!-- Chat Header -->
+
+      <!-- Group Info -->
+      <div id="group-info">
+        <img
+          id="group-image"
+          src="https://picsum.photos/id/237/200/300"
+          alt="Group Image"
+        />
+        <div id="group-details">
+          <h2 id="group-name"></h2>
+          <ul id="participants-list"></ul>
+        </div>
+      </div>
+
+      <div id="chat-header" class="noto-sans-bold">
+        <span id="chat-room-title">Chat Room</span>
+      </div>
+
+      <!-- Chatbox -->
+      <div id="chatbox" class="noto-sans-bold"></div>
+
+      <!-- File Upload -->
+      <!-- <div id="file-upload" class="noto-sans-bold">
+        <input type="file" id="file-input" accept="image/*,video/*,.pdf" />
+        <button id="upload-button">Upload File</button>
+      </div> -->
+
+      <!-- Input Message -->
+      <div class="input-container noto-sans-bold">
+        <input type="text" id="user-input" placeholder="Type a message..." />
+
+        <!-- Hidden file input -->
+        <input
+          type="file"
+          id="file-input"
+          accept="image/*,video/*,.pdf"
+          style="display: none"
+        />
+
+        <button id="upload-button">
+          <img src="file.webp" alt="Upload" />
+        </button>
+
+        <button id="send-button">Send</button>
+      </div>
+    </div>
+
+    <!-- Footer Watermark -->
+    <div id="watermark">@2024 - Kenny Anaga</div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="chatscript.js"></script>
+  </body>
+</html>
