@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "..", "public"))); // Serve frontend files
 
-const apiKey = process.env.GEMINI_API_KEY; // Ensure GEMINI_API_KEY is set in .env
+const apiKey = process.env.GEMINI_API_KEY; //ada di env
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
@@ -57,7 +57,7 @@ app.get("*", (req, res) => {
 // Export the app for Vercel
 module.exports = app;
 
-// For local development, start the server
+// For local development
 if (require.main === module) {
   const port = process.env.PORT || 5500;
   app.listen(port, () => {

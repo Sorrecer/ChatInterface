@@ -21,71 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Menampilkan pesan di chatbox
-  const chatData = {
-    results: [
-      {
-        room: {
-          name: "Product A",
-          id: 12456,
-          image_url: "https://picsum.photos/id/237/200/300",
-          participant: [
-            { id: "admin@mail.com", name: "Admin", role: 0 },
-            { id: "agent@mail.com", name: "Agent A", role: 1 },
-            { id: "customer@mail.com", name: "King Customer", role: 2 },
-          ],
-        },
-        comments: [
-          {
-            id: 1,
-            type: "text",
-            message: "Hello",
-            sender: "customer@mail.com",
-          },
-          {
-            id: 2,
-            type: "image",
-            url: "https://picsum.photos/200/300",
-            message: "Payment proof",
-            sender: "customer@mail.com",
-          },
-        ],
-      },
-    ],
-  };
-
-  // Menampilkan peserta
-  const participantsContainer = document.getElementById("participants-list");
-  const participants = chatData.results[0].room.participant;
-  participants.forEach((p) => {
-    const participantEl = document.createElement("li");
-    participantEl.textContent = `${p.name} (${
-      p.role === 0 ? "Admin" : p.role === 1 ? "Agent" : "Customer"
-    })`;
-    participantsContainer.appendChild(participantEl);
-  });
-
-  // Menampilkan pesan chat
-  const messages = chatData.results[0].comments;
-  messages.forEach((msg) => {
-    const bubble = document.createElement("div");
-    bubble.classList.add("chat-bubble");
-
-    const sender = chatData.results[0].room.participant.find(
-      (p) => p.id === msg.sender
-    );
-    const senderName = sender ? sender.name : "Unknown";
-
-    if (msg.type === "text") {
-      bubble.textContent = `${senderName}: ${msg.message}`;
-    } else if (msg.type === "image") {
-      bubble.classList.add("image-bubble");
-      bubble.innerHTML = `<img src="${msg.url}" alt="${msg.message}"/>`;
-    }
-
-    chatbox.appendChild(bubble);
-  });
-
   // Menangani tombol kirim pesan
   sendButton.addEventListener("click", () => {
     const message = userInput.value.trim();
@@ -122,4 +57,3 @@ document.addEventListener("DOMContentLoaded", function () {
     chatbox.scrollTop = chatbox.scrollHeight;
   }
 });
-  
